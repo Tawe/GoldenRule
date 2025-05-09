@@ -1,0 +1,99 @@
+{
+  "version": 1,
+  "contexts": {
+    "sensitive_directories": {
+      "paths": ["auth/", "infra/", "billing/"],
+      "rules": [
+        {
+          "type": "approval",
+          "message": "Changes in this directory require Tech Lead approval",
+          "action": "warn"
+        },
+        {
+          "type": "security",
+          "message": "Security review required for changes",
+          "action": "block"
+        }
+      ]
+    },
+    "test_files": {
+      "patterns": ["*.test.js", "*.spec.ts"],
+      "rules": [
+        {
+          "type": "test_coverage",
+          "message": "Include boundary cases and error conditions",
+          "action": "suggest"
+        },
+        {
+          "type": "test_structure",
+          "message": "Follow AAA pattern (Arrange, Act, Assert)",
+          "action": "suggest"
+        }
+      ]
+    },
+    "security_files": {
+      "patterns": ["*.auth.*", "*.security.*", "*.crypto.*"],
+      "rules": [
+        {
+          "type": "review",
+          "message": "Security team review required",
+          "action": "block"
+        },
+        {
+          "type": "documentation",
+          "message": "Security documentation required",
+          "action": "warn"
+        }
+      ]
+    },
+    "api_files": {
+      "patterns": ["*.api.*", "*.endpoint.*"],
+      "rules": [
+        {
+          "type": "validation",
+          "message": "Input validation required",
+          "action": "suggest"
+        },
+        {
+          "type": "documentation",
+          "message": "API documentation required",
+          "action": "warn"
+        }
+      ]
+    }
+  },
+  "blocked_patterns": {
+    "deprecated_functions": {
+      "patterns": [
+        "eval\\(",
+        "setTimeout\\(.*['\"].*['\"]",
+        "setInterval\\(.*['\"].*['\"]",
+        "new\\s+Function",
+        "document\\.write",
+        "innerHTML\\s*="
+      ],
+      "message": "Use of deprecated or dangerous function detected",
+      "action": "block"
+    },
+    "insecure_crypto": {
+      "patterns": [
+        "md5\\(",
+        "sha1\\(",
+        "Math\\.random\\(\\)",
+        "crypto\\.createHash\\(['\"]md5['\"]",
+        "crypto\\.createHash\\(['\"]sha1['\"]"
+      ],
+      "message": "Use of insecure cryptographic algorithm detected",
+      "action": "block"
+    },
+    "external_apis": {
+      "patterns": [
+        "fetch\\(['\"]http://",
+        "axios\\(['\"]http://",
+        "request\\(['\"]http://"
+      ],
+      "message": "External API calls must be approved and use HTTPS",
+      "action": "block"
+    }
+  }
+} 

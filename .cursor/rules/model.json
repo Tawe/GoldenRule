@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "model": {
+    "name": "cursor",
+    "approved_versions": [
+      "1.0.0",
+      "1.1.0",
+      "1.2.0"
+    ],
+    "current_version": "1.2.0",
+    "update_policy": {
+      "auto_update": false,
+      "require_review": true,
+      "testing_period_days": 7
+    }
+  },
+  "settings": {
+    "context_window": {
+      "max_files": 10,
+      "max_tokens": 4000,
+      "refresh_interval_minutes": 30
+    },
+    "safety": {
+      "require_peer_review": true,
+      "block_sensitive_dirs": true,
+      "max_auto_changes": 5
+    },
+    "features": {
+      "yolo_mode": false,
+      "auto_install": false,
+      "auto_commit": false
+    }
+  },
+  "monitoring": {
+    "log_level": "info",
+    "track_context_usage": true,
+    "alert_on_sensitive_access": true,
+    "report_anomalies": true
+  },
+  "compliance": {
+    "data_retention_days": 7,
+    "require_enterprise": true,
+    "audit_logging": true,
+    "privacy_mode": true
+  }
+} 
