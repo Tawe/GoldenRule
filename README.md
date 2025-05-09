@@ -129,7 +129,6 @@ npm install
 }
 ```
 
----
 
 ### Package Validation Rules
 
