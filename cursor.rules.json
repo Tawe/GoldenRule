@@ -3,7 +3,7 @@
   "rules": [
     {
       "name": "block-outdated-packages",
-      "description": "Block installation of outdated or low-popularity packages",
+      "description": "Block installation of packages not updated in the last year or with low popularity",
       "pattern": {
         "type": "package-install",
         "packageManager": ["npm", "pip"]
@@ -23,7 +23,7 @@
         }
       ],
       "action": "block",
-      "message": "Package installation blocked: Package must be less than 1 year old, have 1000+ GitHub stars, and be in the allowlist"
+      "message": "Package installation blocked: Package must have been updated in the last year, have 1000+ GitHub stars, and be in the allowlist"
     },
     {
       "name": "block-hardcoded-secrets",

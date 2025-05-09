@@ -5,7 +5,7 @@ A robust security rules engine that helps protect your codebase by enforcing sec
 ## Features
 
 - 🔒 Package Security Validation
-  - Blocks outdated packages
+  - Blocks packages not updated in the last year
   - Enforces minimum GitHub stars
   - Maintains allowlist of trusted packages
   - Validates package update frequency
@@ -116,7 +116,7 @@ node scripts/validate-packages.js package1 package2
 ## Security Rules
 
 ### Package Security
-- Packages must be less than 1 year old
+- Packages must have been updated in the last year
 - Packages must have 1000+ GitHub stars
 - Packages must be in the allowlist
 
