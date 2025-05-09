@@ -1,0 +1,12 @@
+{
+  "name": "golden-rules",
+  "version": "1.0.0",
+  "description": "Security rules engine for code validation",
+  "scripts": {
+    "test": "node test-project/test-validation.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "ignore": "^5.2.4"
+  }
+}

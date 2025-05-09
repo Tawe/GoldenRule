@@ -1,0 +1,104 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "name": "block-outdated-packages",
+      "description": "Block installation of outdated or low-popularity packages",
+      "pattern": {
+        "type": "package-install",
+        "packageManager": ["npm", "pip"]
+      },
+      "conditions": [
+        {
+          "type": "package-age",
+          "maxAgeMonths": 12
+        },
+        {
+          "type": "github-stars",
+          "minStars": 1000
+        },
+        {
+          "type": "allowlist",
+          "file": "allowed-packages.json"
+        }
+      ],
+      "action": "block",
+      "message": "Package installation blocked: Package must be less than 1 year old, have 1000+ GitHub stars, and be in the allowlist"
+    },
+    {
+      "name": "block-hardcoded-secrets",
+      "description": "Block hardcoded secrets and API keys",
+      "pattern": {
+        "type": "code",
+        "regex": "(apiKey|secret|token|password|credential)\\s*=\\s*[\"']([^\"']+)[\"']"
+      },
+      "action": "block",
+      "message": "Hardcoded secrets detected. Use environment variables or secure secret management instead."
+    },
+    {
+      "name": "block-dangerous-functions",
+      "description": "Block usage of potentially dangerous functions",
+      "pattern": {
+        "type": "code",
+        "regex": "(eval\\(|new\\s+Function|setTimeout\\(.*['\"].*['\"]|setInterval\\(.*['\"].*['\"]|child_process\\.(exec|spawn))"
+      },
+      "action": "block",
+      "message": "Dangerous function detected. Consider safer alternatives."
+    },
+    {
+      "name": "warn-insecure-http",
+      "description": "Warn about insecure HTTP usage",
+      "pattern": {
+        "type": "code",
+        "regex": "(fetch|axios)\\(['\"]http://"
+      },
+      "action": "warn",
+      "message": "Insecure HTTP detected. Use HTTPS for all API calls."
+    },
+    {
+      "name": "block-weak-crypto",
+      "description": "Block usage of weak cryptographic algorithms",
+      "pattern": {
+        "type": "code",
+        "regex": "(md5|sha1|Math\\.random\\(\\))"
+      },
+      "action": "block",
+      "message": "Weak cryptographic algorithm detected. Use modern, secure alternatives like SHA-256 or crypto.randomBytes()."
+    },
+    {
+      "name": "block-sensitive-files",
+      "description": "Block committing sensitive files",
+      "pattern": {
+        "type": "file",
+        "regex": "\\.(env|pem|cert|key|id_rsa|config\\.json)$"
+      },
+      "action": "block",
+      "message": "Sensitive file detected. Add to .gitignore and use secure storage for credentials."
+    },
+    {
+      "name": "warn-suspicious-content",
+      "description": "Warn about files with high entropy or non-ASCII content",
+      "pattern": {
+        "type": "file-content",
+        "conditions": [
+          {
+            "type": "base64-ratio",
+            "threshold": 0.3
+          },
+          {
+            "type": "non-ascii-ratio",
+            "threshold": 0.3
+          }
+        ]
+      },
+      "action": "warn",
+      "message": "File contains high ratio of base64 or non-ASCII characters. Verify this is intentional."
+    }
+  ],
+  "settings": {
+    "allowlistFile": "allowed-packages.json",
+    "validationEndpoint": "https://api.example.com/validate-package",
+    "maxFileSize": 10485760,
+    "scanTimeout": 30000
+  }
+} 

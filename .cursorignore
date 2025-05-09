@@ -1,0 +1,64 @@
+# Environment and secrets
+.env
+.env.*
+*.pem
+*.key
+*.cert
+id_rsa
+id_rsa.pub
+*.p12
+*.pfx
+
+# Configuration files that might contain secrets
+config.json
+config.*.json
+credentials.json
+secrets.json
+
+# Development artifacts
+node_modules/
+dist/
+build/
+coverage/
+.cache/
+*.log
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+
+# Debug files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Test files that might contain sensitive data
+test/fixtures/
+**/*.test.env
+**/*.test.key
+
+# Database files
+*.sqlite
+*.db
+
+# Backup files
+*~
+*.backup
+*.bak
+
+# Package manager files that might contain auth tokens
+.npmrc
+.yarnrc
+.pip/
+
+# Documentation with potential sensitive info
+docs/internal/
+private/ 

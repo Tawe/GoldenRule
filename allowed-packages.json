@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "packages": {
+    "npm": [
+      "react",
+      "react-dom",
+      "next",
+      "typescript",
+      "eslint",
+      "prettier",
+      "axios",
+      "lodash",
+      "moment",
+      "express",
+      "jest",
+      "webpack",
+      "babel-core",
+      "node-fetch",
+      "crypto-js"
+    ],
+    "pip": [
+      "requests",
+      "numpy",
+      "pandas",
+      "pytest",
+      "flask",
+      "django",
+      "fastapi",
+      "python-dotenv",
+      "cryptography",
+      "pillow",
+      "scikit-learn",
+      "tensorflow",
+      "pytorch",
+      "beautifulsoup4",
+      "selenium"
+    ]
+  }
+} 
